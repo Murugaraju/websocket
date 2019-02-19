@@ -22,11 +22,13 @@
 socket=new WebSocket("ws://127.0.0.1:8000/status/")
 socket.onopen=function(e){
     console.log("open",e)
-    socket.send(JSON.stringify({"message":"Data from frontend event"}))
+    
+    
 }
 socket.onmessage=function(e){
     console.log("message",e)
 }
+
 
 </script>
 
