@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Websocket Test landing page</title>
+    
+</head>
+<body>
+
+<div class='container'>
+    <div class='row border-bottom my-3 py-3'>
+        <div class='col'>
+            <h1 class='p-0 m-0'>Welcome to Websocket Page, Lanuch Inspector tool to check</h1>
+        </div>
+    </div>
+{% block content %}
+{% endblock %}
+</div>
+<script>
+socket=new WebSocket("ws://127.0.0.1:8000/status/")
+socket.onopen=function(e){
+    console.log("open",e)
+}
+socket.onmessage=function(e){
+    console.log("message",e)
+}
+</script>
+
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>
