@@ -7,7 +7,7 @@ from channels.db import database_sync_to_async
 class ChatConsumer(AsyncConsumer):
 
     async def websocket_connect(self,event):
-        print("Connected dubuku",event)
+        print("Connected",event)
         await self.send({
             "type":"websocket.accept"
         })
@@ -24,8 +24,8 @@ class ChatConsumer(AsyncConsumer):
                 "text": "Hello bro"
             })
 
-    async def websocket_recieve(self,event):
-        pass
+    async def websocket_receive(self,event):
+        print("recieved ",event)
 
     async def websocket_disconnect(self, event):
         pass
