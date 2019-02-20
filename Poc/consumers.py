@@ -17,24 +17,35 @@ class ChatConsumer(AsyncConsumer):
             "type": "websocket.send",
             "text":"Hello bro"
         })
-        # while 1:
-        #     if Tablename is not None:
-        #         await self.send({
-        #         "type": "websocket.send",
-        #         "text":str(Tablename)
-        #         })
-        #     await asyncio.sleep(1)
-        #     await self.send({
-        #     "type": "websocket.send",
-        #     "text":"Tock"
-        #         })
+        while 1:
+            prev='radfasdf'
+            
+            if Tablename[0] !=1 and prev !=Tablename[0]:
+                prev=Tablename[0]
+                await self.send({
+                "type": "websocket.send",
+                "text":str(Tablename)
+                })
+                print(Tablename[0] !=1 and prev !=Tablename[0] )
+                
+            # if True:
+            #     await self.send({
+            #     "type": "websocket.send",
+            #     "text":str(Tablename)
+            #     })
+            await asyncio.sleep(1)
+            print("Table name =====>",Tablename)
+            # await self.send({
+            # "type": "websocket.send",
+            # "text":"Tock"+str(Tablename[0])
+            #     })
         
 
     async def websocket_receive(self,event):
         print("recieved ",event)
-        await self.send({
+        await self.group_send({
              "type": "websocket.send",
-            "text": event['text']
+            "text": "I am from backend your message is "+event['text']
         })
 
     async def websocket_disconnect(self, event):

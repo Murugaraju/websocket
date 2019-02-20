@@ -8,9 +8,10 @@ from asgiref.sync import async_to_sync
 @receiver(post_save,sender=Sample)
 def announce_samplechange(sender,instance,created,**kwargs):
     if created:
-        channel_layer=get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            "gossip",{"type":"sample.update",
-            "event":"changes happend",
-            "name":instance.name}
-        )
+        print("I am executed because change happened in Sample Model")
+        # channel_layer=get_channel_layer()
+        # async_to_sync(channel_layer.group_send)(
+        #     "gossip",{"type":"sample.update",
+        #     "event":"changes happend",
+        #     "name":instance.name}
+        # )
