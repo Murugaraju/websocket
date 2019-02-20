@@ -1,5 +1,5 @@
 from django.db import models
-Tablename=[1]
+Tablename=[1,'empty']
 # Create your models here.
 class Sample(models.Model):
     name=models.CharField(max_length=20)

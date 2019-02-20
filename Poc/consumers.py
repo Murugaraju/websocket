@@ -18,15 +18,18 @@ class ChatConsumer(AsyncConsumer):
             "text":"Hello bro"
         })
         while 1:
-            prev='radfasdf'
             
+            prev=Tablename[1]
             if Tablename[0] !=1 and prev !=Tablename[0]:
-                prev=Tablename[0]
+                print("First state",Tablename[0] !=1 and prev !=Tablename[0] )
+
+                Tablename[1]=Tablename[0]
                 await self.send({
                 "type": "websocket.send",
                 "text":str(Tablename)
                 })
-                print(Tablename[0] !=1 and prev !=Tablename[0] )
+                print("second state",Tablename[0] !=1 and prev !=Tablename[0] )
+
                 
             # if True:
             #     await self.send({
