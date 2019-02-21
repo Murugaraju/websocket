@@ -84,14 +84,15 @@ class Chatchanell(AsyncConsumer):
     async def websocket_connect(self,event):
         print("Connected",event)
         self.chat_room='checking'
-        await self.send({
-            "type":"websocket.accept"
-        })
+       
 
         await self.channel_layer.group_add(
             'checking',
             self.channel_name 
         )
+        await self.send({
+            "type":"websocket.accept"
+        })
         await self.send({
             "type":"websocket.send",
             "text":"hello"
@@ -105,21 +106,25 @@ class Chatchanell(AsyncConsumer):
     async def websocket_receive(self,event):
         print("recieved ",event)
         channel_layer=get_channel_layer()
-        # await channel_layer.group_send('checking',{
-        #     "type":"websocket.send",
-        #     "text": "I am from backend your message is "+event['text']
-        # })
-        await self.send({
-            "type":"websocket.send",
-            "text":"I am from backend your message is "+event['text']
+        await channel_layer.group_send('checking',{
+            "type":"connectedUsers.notify",
+            "text": "I am from backend your message is "+event['text']
         })
+        # await self.send({
+        #     "type":"websocket.send",
+        #     "text":"I am from backend your message is "+event['text']
+        # })
         
 
     async def websocket_disconnect(self, event):
         pass
 
 
-
+    async def connectedUsers_notify(self, event):
+        await self.send({
+                'type': "websocket.send",
+                "text":"chumma"
+            })
 
 class EventConsumer(JsonWebsocketConsumer):
     

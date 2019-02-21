@@ -11,7 +11,7 @@ class Sample(models.Model):
         Tablename[0]=self.name
         layer = get_channel_layer()
         async_to_sync(layer.group_send)('checking', {
-            'type': 'events.alarm',
+            'type': 'connectedUser.notify',
             'text': 'triggered'
         })
         return super().save(*args,**kwargs)
