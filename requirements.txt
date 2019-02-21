@@ -1,0 +1,3 @@
+channels==2.12
+channels-redis
+django==2
