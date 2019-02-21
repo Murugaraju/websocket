@@ -2,7 +2,7 @@ from channels.routing import ProtocolTypeRouter,URLRouter
 from django.urls import path
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator,OriginValidator
-from Poc.consumers import ChatConsumer,NosyConsumer,Chatchanell,EventConsumer
+from Poc.consumers import Chatchanell
 application = ProtocolTypeRouter({
     # Empty for now (http->django views is added by default)
     # 'websocket':AllowedHostsOriginValidator(
@@ -17,9 +17,8 @@ application = ProtocolTypeRouter({
     # )
     'websocket':URLRouter(
                 [
-                    path("status/",ChatConsumer),
-                    path("update/",NosyConsumer),
-                    path("channel/",Chatchanell),
-                    path('event/',EventConsumer)
+                    
+                    path("status/",Chatchanell),
+                    
                 ])
 })
