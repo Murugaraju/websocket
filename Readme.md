@@ -1,5 +1,5 @@
 #poc code on Websocket
-Need redis server running i.e redis-server
+Need redis server running i.e redis-server\
 Installation on ubuntu cmd sudo apt-get install redis-server
 check the redis server status by the cmd redis-cli ping, it responds with PONG
 Required python>=3.6 as the current code uses asyncio package
