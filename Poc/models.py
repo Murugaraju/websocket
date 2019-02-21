@@ -1,4 +1,6 @@
 from django.db import models
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 Tablename=[1,'empty']
 # Create your models here.
 class Sample(models.Model):
@@ -7,5 +9,10 @@ class Sample(models.Model):
     def save(self,*args,**kwargs):
         
         Tablename[0]=self.name
+        layer = get_channel_layer()
+        async_to_sync(layer.group_send)('checking', {
+            'type': 'events.alarm',
+            'text': 'triggered'
+        })
         return super().save(*args,**kwargs)
 

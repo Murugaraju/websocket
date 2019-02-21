@@ -105,10 +105,15 @@ class Chatchanell(AsyncConsumer):
     async def websocket_receive(self,event):
         print("recieved ",event)
         channel_layer=get_channel_layer()
-        await channel_layer.group_send('checking',{
+        # await channel_layer.group_send('checking',{
+        #     "type":"websocket.send",
+        #     "text": "I am from backend your message is "+event['text']
+        # })
+        await self.send({
             "type":"websocket.send",
-            "text": "I am from backend your message is "+event['text']
+            "text":"I am from backend your message is "+event['text']
         })
+        
 
     async def websocket_disconnect(self, event):
         pass
