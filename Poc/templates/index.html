@@ -20,6 +20,7 @@
 </div>
 <script>
 socket=new WebSocket("ws://127.0.0.1:8000/status/")
+//socket=new WebSocket("ws://192.168.100.16:8000/status/")
 socket.onopen=function(e){
     console.log("open",e)
     

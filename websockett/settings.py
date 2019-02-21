@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
     'rest_framework',
-    'Poc'
+    'Poc',
+    'channels_redis'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,16 @@ TEMPLATES = [
     },
 ]
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+            # "hosts": [(os.environ.get('REDIS_URL'),'redis://localhost:6379')],
+
+        },
+    },
+}
 WSGI_APPLICATION = 'websockett.wsgi.application'
 ASGI_APPLICATION='websockett.routing.application'
 
