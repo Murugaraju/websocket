@@ -123,7 +123,7 @@ class Chatchanell(AsyncConsumer):
     async def connectedUsers_notify(self, event):
         await self.send({
                 'type': "websocket.send",
-                "text":"chumma"
+                "text":event['text']
             })
 
 class EventConsumer(JsonWebsocketConsumer):
