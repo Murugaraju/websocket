@@ -1,3 +1,4 @@
 channels==2.12
 channels-redis
 django
+websocket-client
