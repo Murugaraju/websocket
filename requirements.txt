@@ -1,3 +1,4 @@
-channels==2.12
+channels==2.1.2
 channels-redis
 django==2
+djangorestframework

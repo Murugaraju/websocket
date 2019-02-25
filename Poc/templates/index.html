@@ -19,15 +19,19 @@
 {% endblock %}
 </div>
 <script>
-socket=new WebSocket("ws://127.0.0.1:8000/status/")
-//socket=new WebSocket("ws://192.168.100.16:8000/status/")
+//socket=new WebSocket("ws://127.0.0.1:8000/status/")
+socket=new WebSocket("ws://"+window.location.host+"/status/")
 socket.onopen=function(e){
     console.log("open",e)
+    document.write("handshake done")
+    
     
     
 }
 socket.onmessage=function(e){
     console.log("message",e)
+    document.write("Message",e["data"])
+
 }
 
 
