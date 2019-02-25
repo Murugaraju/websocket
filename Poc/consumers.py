@@ -23,7 +23,7 @@ class Chatchanell(AsyncConsumer):
         })
         await self.send({
             "type":"websocket.send",
-            "text":"hello"
+            "text":"Websocket handshake done, channel connected"
         })
         
 

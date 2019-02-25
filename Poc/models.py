@@ -10,7 +10,7 @@ class Sample(models.Model):
 
     def save(self,*args,**kwargs):
         
-       
+        # super().save(*args,**kwargs)
         ws = create_connection("ws://127.0.0.1:8000/status/")
         ws.send(self.name)
         ws.close()

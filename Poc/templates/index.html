@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Websocket Test landing page</title>
-    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
 </head>
-<body>
+<body >
 
 <div class='container'>
     <div class='row border-bottom my-3 py-3'>
-        <div class='col'>
-            <h1 class='p-0 m-0'>Welcome to Websocket Page, Lanuch Inspector tool to check</h1>
+        <div class='col' id='main'>
+            <h1 class='p-0 m-0' style="color:blue">Welcome to Websocket Observing Page</h1>
+            
         </div>
     </div>
 {% block content %}
@@ -23,14 +25,21 @@
 socket=new WebSocket("ws://"+window.location.host+"/status/")
 socket.onopen=function(e){
     console.log("open",e)
-    document.write("handshake done")
+    //document.write("handshake done")
     
     
     
 }
 socket.onmessage=function(e){
     console.log("message",e)
-    document.write("Message",e["data"])
+    var x = document.createElement("P");                        // Create a <p> node
+    var t = document.createTextNode(e['data']);    // Create a text node
+    x.appendChild(t);
+    //var m=document.getElementById("main")                                           // Append the text to <p>
+    document.body.appendChild(x);
+    //document.m.appendChild(x);        
+
+   // document.write("Message",e["data"])
 
 }
 
