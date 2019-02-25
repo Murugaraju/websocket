@@ -1,4 +1,5 @@
 channels==2.1.2
 channels-redis
-django==2
+django
+websocket-client
 djangorestframework
