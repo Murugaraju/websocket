@@ -20,9 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.documentation import include_docs_urls
 from rest_framework.permissions import AllowAny,IsAuthenticated
-
+from Poc.sample import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/',test),
+    path('dubuku/',chann_working)
     
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
