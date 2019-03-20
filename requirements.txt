@@ -3,3 +3,4 @@ channels-redis
 django
 websocket-client
 djangorestframework
+channels-rabbitmq==0.0.11

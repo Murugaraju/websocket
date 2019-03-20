@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'channels',
     'rest_framework',
     'Poc',
-    'channels_redis'
+    'channels_redis',
+    'channels_rabbitmq',
 ]
 
 MIDDLEWARE = [
@@ -72,11 +73,22 @@ TEMPLATES = [
 ]
 
 CHANNEL_LAYERS = {
+    # "default": {
+    #     "BACKEND": "channels_redis.core.RedisChannelLayer",
+    #     "CONFIG": {
+    #         "hosts": [("localhost", 6379)],
+    #         # "hosts": [(os.environ.get('REDIS_URL'),'redis://192.168.100.16:6379')],
+    #         # "hosts": [("192.168.100.16", 6379)],
+
+
+    #     },
+    # },
+
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],
-            # "hosts": [(os.environ.get('REDIS_URL'),'redis://localhost:6379')],
+            # "host": "amqp://guest:guest@127.0.0.1/asgi",
+            "host": "amqp://guest:guest@127.0.0.1:5672",
 
         },
     },
