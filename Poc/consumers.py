@@ -45,7 +45,10 @@ class Chatchanell(AsyncConsumer):
         
 
     async def websocket_disconnect(self, event):
-        pass
+        await self.channel_layer.group_discard(
+            group='checking',
+            channel=self.channel_name
+        )
 
 
     async def connectedSocket_notify(self, event):
